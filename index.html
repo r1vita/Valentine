@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="love">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>valentinnee :333</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='68' viewport='0 0 100 100' style='fill:black;font-size:26px;'><text y='50%'>🎀</text></svg>") 16 0, auto;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(0px); }
+        }
+
+        @keyframes falling {
+            0% {
+                transform: translateY(-100vh) rotate(80deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #ffb6c1);
+            background-size: 400% 400%;
+            animation: backgroundAnimation 15s ease infinite;
+            font-family: Times, serif;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .valentine-card {
+            background: white;
+            padding: 20px;
+            border-radius: 0px;
+            box-shadow: 0 0 0 4px #ff69b4,
+                        0 0 0 8px #ff1493,
+                        0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 0px;
+            position: relative;
+            max-width: 500px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 64px;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="valentine-card">
+            <h1>Will You Be My Valentine :33?</h1>
+            <p>FROM MEEEE :3333🎀</p>
+            <div class="button-container">
+                <button class="btn" id="yesBtn">Yes!</button>
+                <button class="btn" id="noBtn">NOOOOOOOO</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.innerHTML = '🌸';
+            flower.style.left = Math.random() * 90 + 'vw';
+            flower.style.animation = `falling ${Math.random() * 3 + 2}s linear forwards`;
+            document.body.appendChild(flower);
+            
+            setTimeout(() => {
+                flower.remove();
+            }, 10000);
+        }
+
+        setInterval(createFlower, 400);
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        let yesBtnSize = 1;
+
+        noBtn.addEventListener('click', () => {
+            yesBtnSize *= 1.2;
+            yesBtn.style.transform = `scale(${yesBtnSize})`;
+            noBtn.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                noBtn.style.transform = 'scale(0.5)';
+            }, 200);
+        });
+
+        yesBtn.addEventListener('click', () => {
+            alert('YAYYY YESS, i coded this but except some stuff like the falling flowers amma be honest i used a bit of google, i know NOTHING abt js script or not a lot ;( HOPE U LIKKEED THIS THOOO!!!!');
+            confetti();
+        });
+
+        function confetti() {
+            for(let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'flower';
+                confetti.innerHTML = '💖';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animation = `falling ${Math.random() * 3 + 2}s linear forwards`;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 70000);
+            }
+        }
+    </script>
+</body>
+</html>
